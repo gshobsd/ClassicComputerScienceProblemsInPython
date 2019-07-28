@@ -7,12 +7,18 @@ def fib1(n: int) -> int:
 # fib2 does define a base case, but for for all intents and purposes
 # is broken, in terms of efficiency. 
 # I've added some debug prints to demonstrate the design failures.
-def fib2(n: int) -> int:
-    print("fib2() called with n = {}".format(n))
+def fib2(n: int, s: int = 2) -> int:
+
+    if s == 0:
+        side = "left"
+    elif s == 1:
+        side = "right"
+    else:
+        side = "initial call"
+    print("fib2() called with n = {}. Side = {}".format(n, side))
     if n < 2: 
         return n
-    print("calling fib2({}) + fib2({})".format(n - 2, n - 1))
-    return fib2(n - 2) + fib2(n - 1)
+    return fib2(n - 2, 0) + fib2(n - 1, 1)
 
 
 # this is saving state as we going along, thus not having
@@ -66,5 +72,4 @@ if __name__ == "__main__":
     # lack of a base case.
     # print(fib1(5))
 
-    for i in fib6(100):
-        print(i)
+    print(fib2(5))
