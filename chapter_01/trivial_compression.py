@@ -42,7 +42,7 @@ if __name__ == '__main__':
 
     original: str = ""
     nucleotides = ['A', 'C', 'G', 'T']
-    for i in range(10000):
+    for i in range(1):
         original += nucleotides[randint(0,3)]
     
     print("Original bytes: {}".format(getsizeof(original)))
